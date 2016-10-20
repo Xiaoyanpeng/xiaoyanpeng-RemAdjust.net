@@ -4,13 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>rem phone test</title>
-    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <!--iphone设备中的safari私有meta标签，它表示：允许全屏模式浏览；-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--iphone的私有标签，它指定的iphone中safari顶端的状态条的样式；-->
+    <meta content="telephone=no" name="format-detection">
+    <!--告诉设备忽略将页面中的数字识别为电话号码-->
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览；-->
+    <meta name="author" content="xyp" />
+    <!--设计者-->
+    <link rel="apple-touch-icon-precomposed" href="http://....icon.png">
+    <!--支持用户将网页创建快捷方式到桌面-->
     <style>
         html {
             height: 100%;
             width: 100%;
             font-family: 'Heiti SC', 'Microsoft YaHei';
-            font-size: 100px;
             overflow: hidden;
             outline: 0;
             -webkit-text-size-adjust:none;
@@ -31,6 +41,7 @@
             border: 1px solid #ccc;
             text-align: center;
             background-color: #ccc;
+            font-weight:normal;
         }
         .bd {
             margin-top: 1rem;
@@ -51,9 +62,9 @@
         .org-box {
             background-color: #1fc195;
         }
-        @media screen and (min-width:1200px ){
+        /*@media screen and (min-width:1200px ){
             header{font-size: 40px;}
-        }
+        }*/
     </style>
 
 </head>
@@ -82,8 +93,9 @@
                 recalc = function () {
                     var clientWidth = docEl.clientWidth;
                     clientWidth> 720 && (clientWidth = 720),
+                    clientWidth < 320 && (clientWidth = 320),
 //                    if (!clientWidth) return;
-                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                    docEl.style.fontSize = 20 * (clientWidth / 640) + 'px';
                 };
 
         if (!doc.addEventListener) return;
